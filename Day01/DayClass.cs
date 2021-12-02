@@ -43,12 +43,12 @@ namespace Day01
         }
 
         private void LoadData()
-        {
+        {;
             string inputFile = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\input.txt";
 
             if (File.Exists(inputFile))
             {
-                string line;
+                string? line;
                 StreamReader file = new StreamReader(inputFile);
                 while ((line = file.ReadLine()) != null)
                 {
