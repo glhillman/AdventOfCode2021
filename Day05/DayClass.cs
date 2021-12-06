@@ -109,37 +109,26 @@ namespace Day05
             // Horizontal
             if (x1 == x2)
             {
+                xIncrement = 0;
                 yIncrement = y1 <= y2 ? 1 : -1;
-                while (y1 != y2)
-                {
-                    _matrix[x1, y1]++;
-                    y1 += yIncrement;
-                }
-                _matrix[x1, y1]++;
             }
             else if (y1 == y2) // Vertical
             {
                 xIncrement = x1 <= x2 ? 1 : -1;
-                while (x1 != x2)
-                {
-                    _matrix[x1, y1]++;
-                    x1 += xIncrement;
-                }
-                _matrix[x1, y2]++;
+                yIncrement = 0;
             }
             else // diagonal
             {
                 xIncrement = x1 < x2 ? 1 : -1;
                 yIncrement = y1 < y2 ? 1 : -1;
-
-                while (x1 != x2 && y1 != y2)
-                {
-                    _matrix[x1, y1]++;
-                    x1 += xIncrement;
-                    y1 += yIncrement;
-                }
-                _matrix[x2, y2]++;
             }
+            while (x1 != x2 || y1 != y2)
+            {
+                _matrix[x1, y1]++;
+                x1 += xIncrement;
+                y1 += yIncrement;
+            }
+            _matrix[x1, y1]++;
         }
 
         private void DumpMatrix()
