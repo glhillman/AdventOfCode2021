@@ -15,42 +15,28 @@ namespace Day07
         {
             LoadData();
         }
-
-        public void Part1()
+        public void Parts1And2()
         {
-            int minFuel = int.MaxValue;
-            int positionsMax = _subPositions.Max();
-
-            for (int i = 0; i < positionsMax; i++)
-            {
-                int target = i;
-                int fuel = 0;
-                for (int j = 0; j < _subPositions.Count; j++)
-                {
-                    fuel += Math.Abs(target - _subPositions[j]);
-                }
-                minFuel = Math.Min(minFuel, fuel);
-            }
-            Console.WriteLine("Part1: {0}", minFuel);
-        }
-
-        public void Part2()
-        {
-            int minFuel = int.MaxValue;
+            int minFuelPart1 = int.MaxValue;
+            int minFuelPart2 = int.MaxValue;
             int positionsMax = _subPositions.Max();
 
             for (int i = 0; i < positionsMax; i++) // check every possibility from 0 to Max number in positions
             {
                 int target = i;
-                int fuel = 0;
+                int fuelPart1 = 0;
+                int fuelPart2 = 0;
                 for (int j = 0; j < _subPositions.Count; j++)
                 {
                     int delta = Math.Abs(target - _subPositions[j]);
-                    fuel += (delta * (delta + 1)) / 2; // sum of digits formula
+                    fuelPart1 += delta;
+                    fuelPart2 += (delta * (delta + 1)) / 2; // sum of digits formula
                 }
-                minFuel = Math.Min(minFuel, fuel);
+                minFuelPart1 = Math.Min(minFuelPart1, fuelPart1);
+                minFuelPart2 = Math.Min(minFuelPart2, fuelPart2);
             }
-            Console.WriteLine("Part1: {0}", minFuel);
+            Console.WriteLine("Part1: {0}", minFuelPart1);
+            Console.WriteLine("Part2: {0}", minFuelPart2);
         }
 
         private void LoadData()
