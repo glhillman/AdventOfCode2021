@@ -28,10 +28,10 @@ namespace Day25
             {
                 moves = MoveEast();
                 moves += MoveSouth();
-                steps += moves > 0 ? 1 : 0;
+                steps++;
             }
             while (moves > 0);
-            Console.WriteLine("Part1: {0}", ++steps);
+            Console.WriteLine("Part1: {0}", steps);
         }
 
         public void Part2()
